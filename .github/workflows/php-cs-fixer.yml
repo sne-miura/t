@@ -43,9 +43,7 @@ jobs:
             ${{ runner.os }}-composer-
       
       - name: Install dependencies
-        working-directory: .
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       
       - name: Run PHP CS Fixer
-        working-directory: .
         run: vendor/bin/php-cs-fixer check --diff --verbose
