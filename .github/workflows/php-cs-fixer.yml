@@ -14,6 +14,7 @@ on:
       - '**/*.php'
       - '.php-cs-fixer.dist.php'
       - 'composer.json'
+      - '.github/workflows/php-cs-fixer.yml'
 
 jobs:
   php-cs-fixer:
