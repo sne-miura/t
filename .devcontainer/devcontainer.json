@@ -1,0 +1,68 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/php-mariadb
+{
+	"name": "PHP & MariaDB",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"moby": false
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"pnpmVersion": "none"
+		}
+	},
+
+	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
+	"forwardPorts": [
+		8080,
+		3306
+	],
+	"portsAttributes": {
+		"9003": {
+			"label": "Xdebug",
+			"onAutoForward": "ignore"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html"
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"DEVSENSE.composer-php-vscode",
+				"laravel.vscode-laravel",
+				"amiralizadeh9480.laravel-extra-intellisense",
+				"codingyu.laravel-goto-view",
+				"naoray.laravel-goto-components",
+				"pgl.laravel-jump-controller"
+			],
+			"settings": {
+				"launch": {
+					"version": "0.2.0",
+					"configurations": [
+						{
+							"name": "Listen for Xdebug",
+							"type": "php",
+							"request": "launch",
+							"port": 9003,
+							"pathMappings": {
+								"/var/www/html": "/workspace/${localWorkspaceFolderBasename}"
+							}
+						}
+					],
+					"compounds": []
+				}
+			}
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+}
