@@ -47,4 +47,4 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       
       - name: Run PHP CS Fixer
-        run: vendor/bin/php-cs-fixer check --diff --verbose
+        run: vendor/bin/php-cs-fixer check --diff --verbose >> $GITHUB_STEP_SUMMARY

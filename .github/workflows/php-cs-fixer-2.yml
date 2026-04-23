@@ -25,6 +25,6 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       
       - name: PHP-CS-Fixer
-        uses: "docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.5"
+        uses: "docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.5@sha256:8d36b0d9d6e5800f3889c01db6f050dc75cacd08e94f7d203908db4f8b67da2c"
         with:
           args: check
