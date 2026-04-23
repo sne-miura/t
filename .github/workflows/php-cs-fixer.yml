@@ -43,8 +43,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       
-      - name: Install dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
-      
       - name: Run PHP CS Fixer
-        run: vendor/bin/php-cs-fixer check --diff --verbose >> $GITHUB_STEP_SUMMARY
+        run: vendor/bin/php-cs-fixer check --diff --verbose > cs-fixer-output.txt 2>&1
+      
+      - name: Add summary
+        run: |
+          echo "## PHP CS Fixer Results" >> $GITHUB_STEP_SUMMARY
+          cat cs-fixer-output.txt >> $GITHUB_STEP_SUMMARY
