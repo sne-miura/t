@@ -50,4 +50,4 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       
       - name: Run PHP CS Fixer
-        run: vendor/bin/php-cs-fixer check --verbose | tee $GITHUB_STEP_SUMMARY
+        run: vendor/bin/php-cs-fixer check --verbose >> $GITHUB_STEP_SUMMARY
