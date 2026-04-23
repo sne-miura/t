@@ -27,9 +27,12 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # 2.37.0
         with:
-          php-version: '8.5'
+          # php-version: '8.5'
           extensions: curl, mbstring, zip
           coverage: none
+      
+      - name: Test PHP version
+        run: php -v
       
       - name: Get Composer cache directory
         id: composer-cache
@@ -47,9 +50,4 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       
       - name: Run PHP CS Fixer
-        run: vendor/bin/php-cs-fixer check --diff --verbose > cs-fixer-output.txt 2>&1
-      
-      - name: Add summary
-        run: |
-          echo "## PHP CS Fixer Results" >> $GITHUB_STEP_SUMMARY
-          cat cs-fixer-output.txt >> $GITHUB_STEP_SUMMARY
+        run: vendor/bin/php-cs-fixer check --verbose >> $GITHUB_STEP_SUMMARY
