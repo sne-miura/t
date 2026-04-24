@@ -33,7 +33,7 @@ jobs:
         run: php -v
       
       - name: Run PHP CS Fixer
-        run: php-cs-fixer check --verbose --format=github >> $GITHUB_STEP_SUMMARY
+        run: php-cs-fixer check --verbose --format=gitlab >> $GITHUB_STEP_SUMMARY
 
   php-cs-fixer2:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
             -v "${{ github.workspace }}":/app \
             -w /app \
             ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.5@sha256:8d36b0d9d6e5800f3889c01db6f050dc75cacd08e94f7d203908db4f8b67da2c \
-            check --verbose --format=github >> $GITHUB_STEP_SUMMARY
+            check --verbose --format=gitlab >> $GITHUB_STEP_SUMMARY
