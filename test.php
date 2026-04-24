@@ -13,3 +13,4 @@ $arr
     'block';
          }
          echo;
+      '0';
