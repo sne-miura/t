@@ -27,10 +27,10 @@ jobs:
         uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # 2.37.0
         with:
           php-version: '8.2'
-          tools: none,php-cs-fixer
+          tools: php-cs-fixer
       
       - name: Run PHP CS Fixer
-        run: php-cs-fixer check --verbose >> $GITHUB_STEP_SUMMARY
+        run: php-cs-fixer check --verbose --show-progress=none >> $GITHUB_STEP_SUMMARY
 
   php-cs-fixer2:
     runs-on: ubuntu-latest
