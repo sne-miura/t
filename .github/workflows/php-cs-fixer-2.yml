@@ -16,6 +16,9 @@ on:
       - 'composer.json'
       - '.github/workflows/php-cs-fixer-2.yml'
 
+permissions:
+  contents: read
+
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
